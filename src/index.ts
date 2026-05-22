@@ -13,6 +13,11 @@ app.use("/categories", categoryRoute);
 app.use("/speakers", speakerRoute);
 app.use("/events", eventRoute);
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+// Hanya listen kalau bukan di Vercel
+if (process.env.VERCEL !== "1") {
+    app.listen(3000, () => {
+        console.log("Server running on port 3000");
+    });
+}
+
+export default app;
